@@ -82,7 +82,7 @@ class BileshwarApp extends StatelessWidget {
   }
 }
 
-// ================= SPLASH =================
+// ================= SPLASH SCREEN =================
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -163,7 +163,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-// ================= HOME =================
+// ================= HOME SCREEN =================
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -174,7 +174,9 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Bileshwar Computer Classes',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
       ),
@@ -246,7 +248,9 @@ class HomeScreen extends StatelessWidget {
               ),
               title: const Text(
                 'Contact Us',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               subtitle: const Text(
                 'Course and admission enquiry',
@@ -265,7 +269,9 @@ class HomeScreen extends StatelessWidget {
               ),
               title: const Text(
                 'About Us',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               subtitle: const Text(
                 'About Bileshwar Computer Classes',
@@ -282,7 +288,9 @@ class HomeScreen extends StatelessWidget {
           const Center(
             child: Text(
               'Demo APK • Bileshwar Computer Classes',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(
+                color: Colors.grey,
+              ),
             ),
           ),
         ],
@@ -293,7 +301,6 @@ class HomeScreen extends StatelessWidget {
   void showContact(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      showCloseIcon: true,
       builder: (context) {
         return const Padding(
           padding: EdgeInsets.all(24),
@@ -366,12 +373,16 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(
+        bottom: 12,
+      ),
       child: ListTile(
         contentPadding: const EdgeInsets.all(10),
         leading: const CircleAvatar(
           radius: 27,
-          child: Icon(Icons.computer),
+          child: Icon(
+            Icons.computer,
+          ),
         ),
         title: Text(
           course.name,
@@ -393,7 +404,9 @@ class CourseCard extends StatelessWidget {
               ),
             );
           },
-          child: const Text('View'),
+          child: const Text(
+            'View',
+          ),
         ),
       ),
     );
@@ -414,7 +427,9 @@ class CourseDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Course Details'),
+        title: const Text(
+          'Course Details',
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(18),
@@ -443,15 +458,27 @@ class CourseDetails extends StatelessWidget {
           ),
 
           ListTile(
-            leading: const Icon(Icons.schedule),
-            title: const Text('Duration'),
-            subtitle: Text(course.duration),
+            leading: const Icon(
+              Icons.schedule,
+            ),
+            title: const Text(
+              'Duration',
+            ),
+            subtitle: Text(
+              course.duration,
+            ),
           ),
 
           ListTile(
-            leading: const Icon(Icons.currency_rupee),
-            title: const Text('Demo Fees'),
-            subtitle: Text(course.fee),
+            leading: const Icon(
+              Icons.currency_rupee,
+            ),
+            title: const Text(
+              'Demo Fees',
+            ),
+            subtitle: Text(
+              course.fee,
+            ),
           ),
 
           const SizedBox(height: 10),
@@ -489,7 +516,9 @@ class CourseDetails extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.edit_note),
+              icon: const Icon(
+                Icons.edit_note,
+              ),
               label: const Text(
                 'ENQUIRY NOW',
               ),
@@ -501,7 +530,7 @@ class CourseDetails extends StatelessWidget {
   }
 }
 
-// ================= ENQUIRY =================
+// ================= ENQUIRY SCREEN =================
 
 class EnquiryScreen extends StatefulWidget {
   final Course course;
@@ -558,7 +587,9 @@ class _EnquiryScreenState extends State<EnquiryScreen> {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-              child: const Text('OK'),
+              child: const Text(
+                'OK',
+              ),
             ),
           ],
         );
@@ -570,7 +601,9 @@ class _EnquiryScreenState extends State<EnquiryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Course Enquiry'),
+        title: const Text(
+          'Course Enquiry',
+        ),
       ),
       body: Form(
         key: formKey,
@@ -591,13 +624,17 @@ class _EnquiryScreenState extends State<EnquiryScreen> {
               controller: nameController,
               decoration: const InputDecoration(
                 labelText: 'Student Name',
-                prefixIcon: Icon(Icons.person),
+                prefixIcon: Icon(
+                  Icons.person,
+                ),
                 border: OutlineInputBorder(),
               ),
               validator: (value) {
-                if (value == null || value.trim().isEmpty) {
+                if (value == null ||
+                    value.trim().isEmpty) {
                   return 'Enter student name';
                 }
+
                 return null;
               },
             ),
@@ -609,14 +646,21 @@ class _EnquiryScreenState extends State<EnquiryScreen> {
               keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
                 labelText: 'Mobile Number',
-                prefixIcon: Icon(Icons.phone),
+                prefixIcon: Icon(
+                  Icons.phone,
+                ),
                 border: OutlineInputBorder(),
               ),
               validator: (value) {
                 if (value == null ||
-                    value.replaceAll(RegExp(r'[^0-9]'), '').length < 10) {
+                    value.replaceAll(
+                          RegExp(r'[^0-9]'),
+                          '',
+                        ).length <
+                        10) {
                   return 'Enter valid mobile number';
                 }
+
                 return null;
               },
             ),
@@ -628,7 +672,9 @@ class _EnquiryScreenState extends State<EnquiryScreen> {
               maxLines: 4,
               decoration: const InputDecoration(
                 labelText: 'Message / Query',
-                prefixIcon: Icon(Icons.message),
+                prefixIcon: Icon(
+                  Icons.message,
+                ),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -639,7 +685,9 @@ class _EnquiryScreenState extends State<EnquiryScreen> {
               height: 52,
               child: FilledButton.icon(
                 onPressed: submitEnquiry,
-                icon: const Icon(Icons.send),
+                icon: const Icon(
+                  Icons.send,
+                ),
                 label: const Text(
                   'SEND ENQUIRY',
                 ),
